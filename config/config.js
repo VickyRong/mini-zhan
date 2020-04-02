@@ -45,6 +45,17 @@ export default defineConfig({
       ],
     },
     {
+      path: '/workspace',
+      component: '../layouts/BlankLayout',
+      routes: [
+        {
+          name: 'index',
+          path: '/workspace',
+          component: './Workspace/index',
+        },
+      ],
+    },
+    {
       path: '/',
       component: '../layouts/SecurityLayout',
       routes: [
