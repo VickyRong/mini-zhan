@@ -32,8 +32,6 @@
     "test:component": "umi test ./src/components",
     "tsc": "tsc"
   },
-  
-  
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -51,6 +49,7 @@
     "path-to-regexp": "2.4.0",
     "qs": "^6.9.0",
     "react": "^16.8.6",
+    "react-dnd": "^10.0.2",
     "react-dom": "^16.8.6",
     "react-helmet-async": "^1.0.4",
     "umi": "^3.0.14",
