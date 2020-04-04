@@ -14,7 +14,6 @@ const target = {
     },
 
     drop(props, monitor, component) {
-        console.log('monitor.didDrop()-------',monitor.didDrop())
         return { moved: true }
     },
     

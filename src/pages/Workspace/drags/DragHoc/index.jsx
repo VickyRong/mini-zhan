@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { DragSource } from 'react-dnd'
+import { DragSource } from 'react-dnd';
+import { connect } from 'dva';
 
 const Types = {
     COMP: 'comp',
@@ -7,23 +8,24 @@ const Types = {
 
 const source = {
     beginDrag(props){
-        console.log('props:',props)
         const item = { id:props.sourceId }
         return item
     },
     isDragging(props, monitor) {
     },
     endDrag(props, monitor, component) {
+        const { dispatch } = props;
         if (!monitor.didDrop()) {
           return
         }
         const dropResult = monitor.getDropResult()
-        console.log('dropResult---------------:',dropResult)
         if(dropResult){
-            console.log('拖拽结束：')
+            dispatch({
+                type:'workspace/addComponent',
+                params:{ component }
+            })
         }
       },
-    
 }
 
 function sourceCollect(connect, monitor) {
@@ -33,6 +35,9 @@ function sourceCollect(connect, monitor) {
     }
 }
 
+@connect(({ workspace })=>({
+    workspace
+}))
 @DragSource(Types.COMP, source, sourceCollect)
 class DragHoc extends React.Component {
     render(){

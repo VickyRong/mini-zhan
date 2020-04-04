@@ -19,7 +19,7 @@ class WorkspaceLeft extends React.Component {
                 {
                     compList.map((item,index) => 
                         <div className={styles.comp_container} key={index}>
-                            <DragHoc data={item} >
+                            <DragHoc data={item}>
                                 <div className={styles.comp_style}>
                                     { item.name }
                                 </div>
