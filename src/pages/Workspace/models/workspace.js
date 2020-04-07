@@ -1,13 +1,20 @@
+import { generateCompAndProps } from '../components/generateCompAndProps'
 
 export default {
     namespace:'workspace',
-    state:{},
+    state:{
+        elementsData:[],
+        currentComp:{}
+    },
     effects:{
         *addComponent({ params,callback },{ call,put,select }){
             const workspace = yield select(state => state.workspace);
-            let compData = params.component.props.data;
+            const compData = yield generateCompAndProps(
+                params.component.props.data
+            )
             let elementsData = workspace.elementsData || []
             elementsData.push(compData);
+
             yield put({ 
                 type: 'addCompFun',
                 currentComp:compData,

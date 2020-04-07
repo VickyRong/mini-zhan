@@ -5,6 +5,16 @@ import { connect } from 'dva';
 @connect((workspace) => workspace)
 
 class WorkspaceCenter extends React.Component {
+    generateComponents(elementsData){
+       let elem = elementsData.map((item, index) => {
+            let compData = { ...item };
+            let Comp = item.workspace && item.workspace.comp;
+            return <Comp compData={compData} index={index} key={index}/>
+        })
+        return elem
+    }
+
+
     render(){
         const { workspace } = this.props;
         const elementsData = workspace.elementsData || [] ;
@@ -18,10 +28,8 @@ class WorkspaceCenter extends React.Component {
                         { 
                             <div className={ styles.content }>
                                 {
-                                    elementsData.map((item,index) => 
-                                        <div key={index}>{ item.name }</div>
-                                    )
-                                } 
+                                    this.generateComponents(elementsData)
+                                }
                             </div> 
                         }
                     </DropHoc>
