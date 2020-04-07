@@ -21,7 +21,7 @@ const source = {
         const dropResult = monitor.getDropResult()
         if(dropResult){
             dispatch({
-                type:'workspace/addComponent',
+                type:'workspace/addComp',
                 params:{ component }
             })
         }

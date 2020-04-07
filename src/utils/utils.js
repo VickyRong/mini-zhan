@@ -57,3 +57,14 @@ export const getRouteAuthority = (path, routeData) => {
   });
   return authorities;
 };
+
+
+// 组件id
+export const getCompId = (length = 5) => {
+  return Number(
+    Date.now() +
+      Math.random()
+        .toString()
+        .substr(3, length)
+  );
+};
